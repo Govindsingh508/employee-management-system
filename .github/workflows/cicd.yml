@@ -1,0 +1,22 @@
+name: Employee Management CI/CD
+
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      - name: Show project structure
+        run: |
+         echo"GitHub Actions is running!"
+         ls -la
