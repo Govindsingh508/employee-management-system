@@ -18,7 +18,7 @@ jobs:
 
       - name: Show project structure
         run: |
-         echo"GitHub Actions is running!"
+         echo "GitHub Actions is running!"
          ls -la
 
 
