@@ -10,6 +10,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+       image: mysql:8.4
+       env:
+        MYSQL_ROOT_PASSWORD: root@123
+        MYSQL_DATABASE: employee_db
+       ports:
+        - 3306:3306
+       options: >-
+        --health-cmd="mysqladmin ping -h localhost -uroot -proot@123"
+        --health-interval=10s
+        --health-timeout=5s
+        --health-retries=5
 
     steps:
       - name: Checkout code
@@ -26,5 +39,8 @@ jobs:
       - name: Build and Test Backend
         working-directory: backend
         run: mvn clean install
+        env:
+          DB_PASSWORD: root@123
+          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/employee_db
 
          
