@@ -49,6 +49,16 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('backend/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Check SonarQube connectivity
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          test -n "$SONAR_HOST_URL"
+          curl --fail --show-error --location \
+            --connect-timeout 15 \
+            --max-time 30 \
+            "$SONAR_HOST_URL/api/system/status"
+
       - name: Build and analyze
         working-directory: backend
         env:
