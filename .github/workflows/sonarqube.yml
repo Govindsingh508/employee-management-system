@@ -66,4 +66,4 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           DB_HOST: 127.0.0.1
           DB_PASSWORD: root
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=employee-management-system -Dsonar.projectName='Employee Management System'
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Employee-Management-System -Dsonar.projectName='Employee Management System'
